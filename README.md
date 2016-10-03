@@ -278,3 +278,18 @@ MariaDB [test_vh]> select count(*) from (select 1 from tb_rel group by MEDREC_ID
 +----------+
 |      338 |
 +----------+
+
+
+Task #3
+-------
+
+create table patients (MEDREC_ID int primary key, FIRST_NAME varchar(100), LAST_NAME varchar(100), unique index (LAST_NAME, FIRST_NAME));
+/* Ставим int, где можем. Делим на части списочную колонку. Делаем unique index */
+
+create table patient_icds (ID int primary key auto_increment, MEDREC_ID int, ICD int, unique index (MEDREC_ID, ICD));
+/* Ставим int, где можем. Делаем UNIQUE INDEX */
+
+create table patient_ndcs (ID int primary key auto_increment, MEDREC_ID int, NDC varchar(20), index (MEDREC_ID, NDC));
+/* Кроме того, вероятно, нужна колонка вроде CREATED_AT (datetime) и unique index с ее участием. Может быть стоит заменить NDC на искусственный NDC_ID (int) из отдельной таблицы */
+
+
