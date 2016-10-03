@@ -1,0 +1,14 @@
+RewriteEngine on
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule . index.php
+
+RewriteRule ^(docs)($|/) - [L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+RewriteCond %{REQUEST_URI} !(img/*|css/*|js/*)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*) index.php?r=$1 [L,QSA]
+
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
