@@ -111,6 +111,10 @@ class SiteController extends Controller
             ]
         ]);
 
+        Yii::$app->db->cache(function ($db) use ($dataProvider){
+            $dataProvider->prepare();
+        }, 600);
+
         return $this->render('patient_list', [
             'dataProvider' => $dataProvider,
         ]);
