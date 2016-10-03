@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d1a339055eda9633126c79849a3d46d0",
-    "content-hash": "a0091993e4e751142629488a2d96b1da",
+    "hash": "6c57c05909411a0705c8807e513910d5",
+    "content-hash": "b4b605b6e6e43a467eb491ad225dc660",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -542,6 +542,54 @@
                 "yii2"
             ],
             "time": "2016-06-05 20:34:32"
+        },
+        {
+            "name": "yiisoft/yii2-redis",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-redis.git",
+                "reference": "f93328ec44de8713e2ec4bbb6167ca80b29fc1ee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-redis/zipball/f93328ec44de8713e2ec4bbb6167ca80b29fc1ee",
+                "reference": "f93328ec44de8713e2ec4bbb6167ca80b29fc1ee",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0.4"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\redis\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Carsten Brandt",
+                    "email": "mail@cebe.cc"
+                }
+            ],
+            "description": "Redis Cache, Session and ActiveRecord for the Yii framework",
+            "keywords": [
+                "active-record",
+                "cache",
+                "redis",
+                "session",
+                "yii2"
+            ],
+            "time": "2016-09-05 11:34:39"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
@@ -1551,12 +1599,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "d425ff8732ffea534b3961bef115c1524a9783d1"
+                "reference": "c61e00f21498269c6dffbe07db8c3d8828d0fc05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d425ff8732ffea534b3961bef115c1524a9783d1",
-                "reference": "d425ff8732ffea534b3961bef115c1524a9783d1",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c61e00f21498269c6dffbe07db8c3d8828d0fc05",
+                "reference": "c61e00f21498269c6dffbe07db8c3d8828d0fc05",
                 "shasum": ""
             },
             "require": {
@@ -1625,7 +1673,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-10-03 07:51:53"
+            "time": "2016-10-03 13:06:09"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
