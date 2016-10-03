@@ -72,7 +72,8 @@ MariaDB [test_vh]> create  index i1 on tb_rel(MEDREC_ID, NDC);
 Task #1
 -------
 
-MariaDB [test_vh]> select distinct s.MEDREC_ID, s.PATIENT_NAME from tb_source s, tb_rel r where s.MEDREC_ID=r.MEDREC_ID and PATIENT_NAME like binary '%Alex%' order by s.PATIENT_NAME;
+MariaDB [test_vh]> select distinct s.MEDREC_ID, s.PATIENT_NAME from tb_source s, tb_rel r
+where s.MEDREC_ID=r.MEDREC_ID and PATIENT_NAME like binary '%Alex%' order by s.PATIENT_NAME;
 +-----------+--------------------+
 | MEDREC_ID | PATIENT_NAME       |
 +-----------+--------------------+

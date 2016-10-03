@@ -6,8 +6,9 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+use yii\data\ActiveDataProvider;
+use app\models\Source;
+use app\models\Rel;
 
 class SiteController extends Controller
 {
@@ -64,62 +65,33 @@ class SiteController extends Controller
     }
 
     /**
-     * Login action.
+     * Task #4 action
      *
      * @return string
      */
-    public function actionLogin()
+    public function actionTask4()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
+        $query = Source::find()->select([Source::tableName() . '.MEDREC_ID', 'PATIENT_NAME'])
+                       ->innerJoinWith('rel', false)
+                       ->where(['like binary', 'PATIENT_NAME', '%Alex%'])
+                       ->distinct();
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-        return $this->render('login', [
-            'model' => $model,
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 100,
+            ],
+            'sort' => [
+                'attributes' => [
+                    'MEDREC_ID',
+                    'PATIENT_NAME'
+                ]
+            ]
         ]);
-    }
 
-    /**
-     * Logout action.
-     *
-     * @return string
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
-    }
-
-    /**
-     * Displays contact page.
-     *
-     * @return string
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
+        return $this->render('task4', [
+            'dataProvider' => $dataProvider,
         ]);
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
     }
 }
