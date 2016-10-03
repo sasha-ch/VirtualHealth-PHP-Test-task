@@ -268,3 +268,13 @@ MariaDB [test_vh]> select distinct s.MEDREC_ID, s.PATIENT_NAME from tb_source s,
 | 4792      | Scout Alexander    |
 +-----------+--------------------+
 
+
+Task #2
+-------
+
+MariaDB [test_vh]> select count(*) from (select 1 from tb_rel group by MEDREC_ID , NDC having count(*)>2) t1;
++----------+
+| count(*) |
++----------+
+|      338 |
++----------+
