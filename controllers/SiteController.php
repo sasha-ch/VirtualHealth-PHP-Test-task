@@ -7,6 +7,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
+use yii\db\Query;
 use app\models\Source;
 use app\models\Rel;
 
@@ -76,6 +77,26 @@ class SiteController extends Controller
                        ->where(['like binary', 'PATIENT_NAME', '%Alex%'])
                        ->distinct();
 
+        return $this->renderPatientList($query);
+    }
+
+    /**
+     * Task #5 action
+     *
+     * @return string
+     */
+    public function actionTask5()
+    {
+        $query = (new Query())->select(['s.MEDREC_ID', 's.PATIENT_NAME'])
+                              ->from(['s' => 'tb_source', 'r' => 'tb_rel'])
+                              ->where('s.MEDREC_ID=r.MEDREC_ID')
+                              ->andWhere(['like binary', 'PATIENT_NAME', '%Alex%'])
+                              ->distinct();
+        return $this->renderPatientList($query);
+    }
+
+    protected function renderPatientList(Query $query)
+    {
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -90,7 +111,7 @@ class SiteController extends Controller
             ]
         ]);
 
-        return $this->render('task4', [
+        return $this->render('patient_list', [
             'dataProvider' => $dataProvider,
         ]);
     }

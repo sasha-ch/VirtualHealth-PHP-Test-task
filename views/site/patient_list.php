@@ -4,10 +4,9 @@ use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 
-$this->title = 'Task #4';
+$this->title = 'List of patients';
 ?>
 <div class="site-index">
-
     <div class="body-content">
 
         <?= GridView::widget([
